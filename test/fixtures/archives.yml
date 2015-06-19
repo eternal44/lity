@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: archives
+#
+#  id          :integer          not null, primary key
+#  group_id    :integer
+#  user_id     :integer
+#  lift_name   :integer
+#  lift_weight :integer
+#  video_link  :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_id: 1
+  user_id: 1
+  lift_name: 1
+  lift_weight: 1
+  video_link: MyString
+
+two:
+  group_id: 1
+  user_id: 1
+  lift_name: 1
+  lift_weight: 1
+  video_link: MyString

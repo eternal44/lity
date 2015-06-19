@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :archives, module: :groups
   end
 
-  root 'group#index'
+  root 'groups#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

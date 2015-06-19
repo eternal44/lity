@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @group.group_name %></h1>
+
+Created by <%= @group.user.first_name %> <%= @forum_thread.user.last_name %>
+<%= link_to 'Edit', edit_group_path(@group) %> | <%= link_to 'Back', groups_path %>
+
+<% @group.archives.each do |archive| %>
+	<div><%= archive.user.first_name %> <%= archive.user.last_name %> record:</div>
+	<div><%= archive.lift_name %></div>
+	<div><%= archive.lift_weight %></div>
+	<div><%= archive.video_link %></div>
+<% end %>
+
+<%= form_for [@group, @archive] do |f| %>
+	<div><%= f.text_field :lift_name %></div>
+	<div><%= f.integer :lift_weight %></div>
+	<div><%= f.string :video_link %></div>
+	<div><%= f.submit %></div>
+<% end %>

@@ -1,0 +1,30 @@
+<%= form_for [@group, @archive] do |f| %>
+  <% if @archive.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@archive.errors.count, "error") %> prohibited this archive from being saved:</h2>
+
+      <ul>
+      <% @archive.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lift_weight %><br>
+    <%= f.number_field :lift_weight %>
+  </div>
+  <div class="field">
+    <%= f.label :lift_name %><br>
+    <%= f.text_field :lift_name %>
+  </div>
+  <div class="field">
+    <%= f.label :video_link %><br>
+    <%= f.text_field :video_link %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

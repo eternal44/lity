@@ -1,17 +1,16 @@
 # == Schema Information
 #
-# Table name: groups
+# Table name: memberships
 #
 #  id         :integer          not null, primary key
-#  group_name :string
+#  user_id    :integer
+#  group_id   :integer
+#  group_role :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'test_helper'
-
-class GroupTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Membership < ActiveRecord::Base
+	belongs_to :users
+	belongs_to :groups
 end

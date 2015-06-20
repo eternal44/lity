@@ -4,10 +4,21 @@
 	<h1><%= @group.group_name %></h1>
 
 	<%= render partial: "archives/form" %>	
+
+	<% if @membership.present? %>
+		<div class="pull-right">
+			<h3>Members in the group</h3>
+			<% @membership.each do |membership| %>
+				<%= "Member ID:#{membership.user_id} " %></br>
+			<% end %>
+		</div>
+	<% end %>
+
 	<hr />
 
-	Created by <%= @group.user.first_name %> <%= @group.user.last_name %>
 	<%= link_to 'Edit', edit_group_path(@group) %> | <%= link_to 'Back', groups_path %>
+
+
 
 	<% if @group.archives.present? %>
 		<% @group.archives.each do |archive| %>

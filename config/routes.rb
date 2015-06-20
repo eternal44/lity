@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :archives, module: :groups
   end
 
+  resources :memberships
+
   root 'groups#index'
 
   # Example of regular route:

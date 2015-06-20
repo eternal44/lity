@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  group_id    :integer
 #  user_id     :integer
-#  lift_name   :integer
+#  lift_name   :string
 #  lift_weight :integer
 #  video_link  :string
 #  created_at  :datetime         not null

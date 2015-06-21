@@ -5,7 +5,6 @@
   <% @groups.each do |group| %>
     <div>
       <h2><%= link_to group.group_name, group %></h2>
-      <p>Created by <%= group.user.first_name %></p>
     </div>
   <% end %>
 <br>

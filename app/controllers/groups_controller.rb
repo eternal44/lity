@@ -30,6 +30,7 @@ class GroupsController < ApplicationController
 	def show
 		@group = Group.find(params[:id])
 		@archive = Archive.new
+		@membership = Membership.where(group_id: (params[:id]))
 	end
 
 	private

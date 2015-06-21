@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  # resources :users
+
   resources :groups do
     resources :archives, module: :groups
+    resources :memberships
   end
 
-  resources :memberships
+  
 
   root 'groups#index'
 

@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
 	private
 		def set_group
 			@group = Group.find(params[:id])
-			authorize @group
+			# authorize @group
 		end
 
 		def group_params

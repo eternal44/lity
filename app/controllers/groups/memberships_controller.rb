@@ -1,10 +1,27 @@
-class MembershipsController < ApplicationController
+class Groups::MembershipsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
-	before_action :set_group, except: [:index, :show]
+	before_action :set_group
 
 	def new
 		@membership = Membership.new
+	end
+
+	def index
 		@memberships = @group.memberships
+	end
+
+	def edit
+		@membership = Membership.find(params[:id])
+	end
+
+	def update
+		@membership = Membership.find(params[:id])
+
+		if @membership.update(membership_params)
+			redirect_to group_memberships_path(@group)
+		else
+			render :edit
+		end
 	end
 
 	def create
@@ -15,6 +32,12 @@ class MembershipsController < ApplicationController
 		else
 			redirect_to @membership, alert: "Unable to add member"
 		end
+	end
+
+	def destroy
+		@membership = Membership.find(params[:id])
+		@membership.destroy
+		redirect_to group_memberships_path(@group)
 	end
 
 	private

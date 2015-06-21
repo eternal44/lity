@@ -20,11 +20,11 @@ class GroupsController < ApplicationController
 	end
 
 	def create
-		@group = current_user.groups.new(group_params)
-		
+		@group = Group.new(group_params)
 		# authorize @group
 
 		if @group.save
+			@group.memberships.create(user_id: current_user.id, group_id: @group.id, group_role: "admin")
 			redirect_to @group
 		else
 			render action: :new
@@ -45,6 +45,6 @@ class GroupsController < ApplicationController
 		end
 
 		def group_params
-			params.require(:group).permit(:group_name)
+			params.require(:group).permit(:group_name, memberships_attributes: [:user_id, :group_id, :group_role])
 		end
 end

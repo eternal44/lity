@@ -1,10 +1,11 @@
 class Groups::ArchivesController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_archive
+	before_action :set_group
 
 	def create
 		@archive = @group.archives.new(archive_params)
 		@archive.user = current_user
+		# authorize @archive
 
 		if @archive.save
 			redirect_to group_path(@group, notice: "Record successfully posted!")
@@ -13,10 +14,42 @@ class Groups::ArchivesController < ApplicationController
 		end
 	end
 
+	def edit
+		@archive = Archive.find(params[:id])
+		# @archive = @group.archive.find(params[:id])
+		# authorize @archive	
+	end
+
+	def update
+		@archive = Archive.find(params[:id])
+		# @archive = @group.archive.find(params[:id])		
+		# authorize @archive		
+
+		if @archive.update(archive_params)
+			redirect_to @archive.group
+		else
+			render :edit
+		end
+	end
+
+	def destroy
+		@archive = Archive.find(params[:id])
+		@archive.destroy
+
+		redirect_to @archive.group
+		# authorize @archive
+
+    # respond_to do |format|
+    #   format.html { redirect_to groups_url, notice: 'Record was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
+	end
+
 	private
 
-		def set_archive
+		def set_group
 			@group = Group.find(params[:group_id])
+			# authorize @archive
 		end
 
 		def archive_params

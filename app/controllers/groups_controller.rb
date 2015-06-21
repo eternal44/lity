@@ -2,11 +2,14 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]	
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
-  after_action :verify_authorized  
-
 	def index
 		@groups = Group.all
 		authorize @groups
+	end
+
+	def edit
+		@group = Group.find(params[:id])
+		# authorize @group
 	end
 
 	def new
@@ -30,7 +33,7 @@ class GroupsController < ApplicationController
 
 	def show
 		@group = Group.find(params[:id])
-		authorize @group
+		# authorize @group
 		@archive = Archive.new
 		@membership = Membership.where(group_id: (params[:id]))
 	end

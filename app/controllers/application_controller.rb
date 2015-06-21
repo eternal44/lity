@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  # use this to authorize devise if you need to lock down whole app with "after_action"
+  # after_action :verify_authorized, unless: :devise_controller?
+
   include Pundit
 
   protected 

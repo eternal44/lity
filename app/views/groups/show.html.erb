@@ -3,7 +3,9 @@
 <div class="container">
 	<h1><%= @group.group_name %></h1>
 
-	<%= render partial: "archives/form" %>	
+	<% if policy(Archive).new? %>
+		<%= render partial: "archives/form" %>	
+	<% end %>
 
 	<% if @membership.present? %>
 		<div class="pull-right">
@@ -14,16 +16,36 @@
 		</div>
 	<% end %>
 
-	<hr />
-
 	<%= link_to 'Edit', edit_group_path(@group) %> | <%= link_to 'Back', groups_path %>
 
-	<% if @group.archives.present? %>
-		<% @group.archives.each do |archive| %>
-			<div><%= archive.user.first_name %> <%= archive.user.last_name %> record:</div>
-			<div><%= archive.lift_name %></div>
-			<div><%= archive.lift_weight %></div>
-			<div><%= archive.video_link %></div>
-		<% end %>
-	<% end %>
+
+	<hr />
+	<table>
+		<thead>
+			<tr>
+				<th>First & Last Name</th>
+				<th>Lift Name</th>
+				<th>Weight</th>
+				<th>Video Validation</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% if @group.archives.present? %>
+				<% @group.archives.each do |archive| %>
+					<tr>
+						<td><%= archive.user.first_name %> <%= archive.user.last_name %></td>
+						<td><%= archive.lift_name %></td>
+						<td><%= archive.lift_weight %></td>
+						<td><%= archive.video_link %></td>
+						<td><%= link_to "Edit", [:edit, @group, archive] %></td>
+						<td><%= link_to "Destroy", group_archive_path(@group, archive), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+
+
 </div>

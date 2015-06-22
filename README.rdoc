@@ -14,7 +14,7 @@ Membership
 
 			Column 1:
 				Users he can choose from
-				Add search field later
+				Add search field
 
 			Column 2:
 				populate list of groups current user is "admin" on

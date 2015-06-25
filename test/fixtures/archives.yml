@@ -14,16 +14,23 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  group_id: 1
-  user_id: 1
-  lift_name: 1
-  lift_weight: 1
-  video_link: MyString
+archive_1:
+  user: james
+  group: one
+  lift_name: "Squat"
+  lift_weight: 200
+  video_link: "https://www.youtube.com/watch?v=VwQr4fGL2pc"
 
-two:
-  group_id: 1
-  user_id: 1
-  lift_name: 1
-  lift_weight: 1
-  video_link: MyString
+archive_2:
+  user: steve
+  group: one
+  lift_name: "Squat"
+  lift_weight: 300
+  video_link: "https://www.youtube.com/watch?v=QhVC_AnZYYM"
+
+archive_3:
+  user: steve
+  group: two
+  lift_name: "Squat"
+  lift_weight: 300
+  video_link: "https://www.youtube.com/watch?v=QhVC_AnZYYM"

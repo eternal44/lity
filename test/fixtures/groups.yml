@@ -11,9 +11,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 1
-  group_name: MyString
+  group_name: Lifters
 
 two:
-  user_id: 1
-  group_name: MyString
+  group_name: Meaters

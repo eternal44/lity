@@ -9,13 +9,14 @@
 #
 
 class Group < ActiveRecord::Base
-	has_many :memberships
+	has_many :memberships, dependent: :destroy
 	has_many :users, through: :memberships
 
 	has_many :archives
 
 	accepts_nested_attributes_for :archives
 
-	validates :group_name, presence: true
 	validates_associated :archives
+	validates :group_name, presence: true
+
 end

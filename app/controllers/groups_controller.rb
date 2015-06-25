@@ -12,6 +12,16 @@ class GroupsController < ApplicationController
 		# authorize @group
 	end
 
+	def update
+		@group = Group.find(params[:id])
+
+		if @group.update(group_params)
+			redirect_to groups_path
+		else
+			render :edit
+		end		
+	end
+
 	def new
 		@group = Group.new
 		@group.archives.new
@@ -36,6 +46,12 @@ class GroupsController < ApplicationController
 		# authorize @group
 		@archive = Archive.new
 		@membership = Membership.where(group_id: (params[:id]))
+	end
+
+	def destroy
+		@group = Group.find(params[:id])
+		@group.destroy
+		redirect_to groups_path
 	end
 
 	private

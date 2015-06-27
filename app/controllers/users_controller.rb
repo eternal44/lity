@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 	before_action only: [:index, :show]
 
 	def index
-		@users = User.all
+		@q = User.search(params[:q])
+		@users = @q.result(distinct: true) #generates one result even though multiple instances might be found
 	end
 
 	def show

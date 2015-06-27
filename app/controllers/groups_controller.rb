@@ -15,8 +15,8 @@ class GroupsController < ApplicationController
 	def update
 		@group = Group.find(params[:id])
 
-		if @group.update(group_params)
-			redirect_to groups_path
+		if @group.update_attributes(group_params)
+			redirect_to group_path(@group)
 		else
 			render :edit
 		end		
@@ -61,6 +61,6 @@ class GroupsController < ApplicationController
 		end
 
 		def group_params
-			params.require(:group).permit(:group_name, memberships_attributes: [:user_id, :group_id, :group_role])
+			params.require(:group).permit(:group_name, {:user_ids => []})
 		end
 end

@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>First & Last Name</th>
+      <th>Group Name</th>
       <th>Group Role</th>
       <th colspan="3"></th>
     </tr>
@@ -15,9 +16,10 @@
     <% @memberships.each do |membership| %>
       <tr>
         <td><%= membership.user.first_name %> <%= membership.user.last_name %></td>
+        <td><%= membership.group.group_name %></td>
         <td><%= membership.group_role %>
-        <td><%= link_to 'Edit |', [:edit, @group, membership] %></td>
-        <td><%= link_to 'Destroy', group_membership_path(@group, membership), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit |', [:edit, membership] %></td>
+        <td><%= link_to 'Destroy', membership_path(membership), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

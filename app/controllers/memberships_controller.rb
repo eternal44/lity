@@ -1,13 +1,15 @@
-class Groups::MembershipsController < ApplicationController
+class MembershipsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
-	before_action :set_group
+	# before_action :set_group
 
 	def new
 		@membership = Membership.new
 	end
 
 	def index
-		@memberships = @group.memberships
+		# @group = Group.find(params[:id])
+		# # @memberships = @group.memberships
+		@memberships = Membership.all
 	end
 
 	def edit
@@ -25,7 +27,7 @@ class Groups::MembershipsController < ApplicationController
 	end
 
 	def create
-		@membership = @group.memberships.new(membership_params)		
+		@membership = Membership.create(membership_params)		
 
 		if @membership.save
 			redirect_to group_path(@group, notice: "Member successfully added!")
@@ -37,15 +39,15 @@ class Groups::MembershipsController < ApplicationController
 	def destroy
 		@membership = Membership.find(params[:id])
 		@membership.destroy
-		redirect_to group_memberships_path(@group)
+		redirect_to memberships_path
 	end
 
 	private
-		def set_group
-			@group = Group.find(params[:group_id])
-		end
+		# def set_group
+		# 	@group = Group.find(params[:group_id])
+		# end
 
 		def membership_params
-			params.require(:membership).permit(:user_id, :group_id, :group_role)
+			params.require(:membership).permit(:user_id, :group_id, :group_role, groups_attributes: [:group_name])
 		end
 end

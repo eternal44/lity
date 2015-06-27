@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
 
 	def edit
 		@group = Group.find(params[:id])
+		# @group_role = ["regular", "admin"] #putting options on view page
 		# authorize @group
 	end
 
@@ -19,7 +20,13 @@ class GroupsController < ApplicationController
 			redirect_to group_path(@group)
 		else
 			render :edit
-		end		
+		end	
+
+			#hold code here for safe keeping
+      # <%= f.select(:group_role, options_for_select([["Select One", ""], "Regular", "Admin"]), 
+      #   :selected => :group_role) %><br>
+
+
 	end
 
 	def new

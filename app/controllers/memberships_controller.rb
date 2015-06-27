@@ -1,6 +1,6 @@
-class MembershipsController < ApplicationController
+class Groups::MembershipsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
-	# before_action :set_group
+	before_action :set_group
 
 	def new
 		@membership = Membership.new
@@ -20,7 +20,7 @@ class MembershipsController < ApplicationController
 		@membership = Membership.find(params[:id])
 
 		if @membership.update(membership_params)
-			redirect_to group_memberships_path(@group)
+			redirect_to group_path(@group)
 		else
 			render :edit
 		end
@@ -43,9 +43,9 @@ class MembershipsController < ApplicationController
 	end
 
 	private
-		# def set_group
-		# 	@group = Group.find(params[:group_id])
-		# end
+		def set_group
+			@group = Group.find(params[:group_id])
+		end
 
 		def membership_params
 			params.require(:membership).permit(:user_id, :group_id, :group_role, groups_attributes: [:group_name])

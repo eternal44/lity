@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :archives, module: :groups
+    resources :memberships, module: :groups
+
   end
   
-  resources :memberships
   
 
   root 'groups#index'

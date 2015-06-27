@@ -3,7 +3,7 @@
 <div class="container">
 	<h1><%= @group.group_name %></h1>
 
-	<%= link_to 'See Members', memberships_path %> | <%= link_to 'Edit', edit_group_path(@group) %> | <%= link_to 'Back', groups_path %>
+	<%= link_to 'Manage Group Memberships', edit_group_path(@group) %> | <%= link_to 'Back', groups_path %>
 
 	<% if policy(Archive).new? %>
 		<%= render partial: "archives/form" %>	
@@ -13,7 +13,12 @@
 		<div class="pull-right">
 			<h3>Members in the group</h3>
 			<% @membership.each do |membership| %>
-				<%= membership.user.first_name %></br>
+				<%= membership.user.first_name %>
+				<%= membership.user.last_name %>
+				<%= membership.group_role %>
+				<%= link_to 'edit group role', edit_group_membership_path(@group, membership) %>
+			</br>
+
 			<% end %>
 		</div>
 	<% end %>

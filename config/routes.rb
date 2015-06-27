@@ -9,9 +9,13 @@ Rails.application.routes.draw do
 
   end
   
-  
+  authenticated :user do
+    root to: "users#index", as: :authenticated_root, via: :get
+  end
 
-  root 'groups#index'
+  unauthenticated do
+    root to: "users#index"
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -21,12 +21,6 @@ class GroupsController < ApplicationController
 		else
 			render :edit
 		end	
-
-			#hold code here for safe keeping
-      # <%= f.select(:group_role, options_for_select([["Select One", ""], "Regular", "Admin"]), 
-      #   :selected => :group_role) %><br>
-
-
 	end
 
 	def new

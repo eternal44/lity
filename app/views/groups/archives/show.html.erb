@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+	<hr />
+	<h3>Archive show</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>First & Last Name</th>
+				<th>Lift Name</th>
+				<th>Weight</th>
+				<th>Video Validation</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+				<tr>
+					<td><%= @archive.user.first_name %> <%= @archive.user.last_name %></td>
+					<td><%= @archive.lift_name %></td>
+					<td><%= @archive.lift_weight %></td>
+					<td><%= @archive.video_link %></td>
+					<td><%= link_to "Edit", [:edit, @group, @archive] %></td>
+					<td><%= link_to "Destroy", group_archive_path(@group, @archive), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+				</tr>
+		</tbody>
+	</table>
+
+
+</div>

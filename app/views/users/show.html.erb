@@ -4,7 +4,6 @@
 <strong>Name:</strong>
 <%= @user.first_name %>
 <%= @user.last_name %>
-
 <br>
 
 <strong>Email:</strong>
@@ -37,6 +36,30 @@
 	</table>
 
 
+
+<h3>Archives</h3>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Lift Name</th>
+				<th>Lift Weight</th>
+				<th>Video Validation</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @user.archives.each do |a| %>
+					<tr>
+						<td><%= a.lift_name %></td>
+						<td><%= a.lift_weight %></td>
+						<td><%= a.video_link %></td>
+						<td><%= link_to "See Archive", group_archive_path(a.group_id, a) %></td>
+					</tr>
+			<% end %>
+		</tbody>
+	</table>
 
 
 

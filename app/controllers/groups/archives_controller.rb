@@ -2,6 +2,10 @@ class Groups::ArchivesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_group
 
+	def show
+		@archive = @group.archives.find(params[:id])
+	end
+
 	def create
 		@archive = @group.archives.new(archive_params)
 		@archive.user = current_user

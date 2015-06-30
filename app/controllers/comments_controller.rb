@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 		@comment = @commentable.comments.new comment_params
 		@comment.user_id = current_user.id
 		@comment.save
-		redirect_to @commentable, notice: "Your comment was successfullly posted."
+		redirect_to :back, notice: "Your comment was successfullly posted."
 	end
 
 	private

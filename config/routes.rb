@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :memberships, module: :groups
     resources :comments, module: :groups
   end
+
+  resources :archives do
+    resources :comments, module: :archives
+  end
   
   authenticated :user do
     root to: "users#index", as: :authenticated_root, via: :get

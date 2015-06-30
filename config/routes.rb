@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :groups do
     resources :archives, module: :groups
     resources :memberships, module: :groups
-
+    resources :comments, module: :groups
   end
   
   authenticated :user do

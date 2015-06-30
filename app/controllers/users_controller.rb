@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@archives = Archive.where(user_id: @user.id)
 	end
 
 	private

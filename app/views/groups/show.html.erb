@@ -5,25 +5,11 @@
 
 	<%= link_to 'Manage Group Memberships', edit_group_path(@group) %> | <%= link_to 'Back', groups_path %>
 
+<div>
 	<% if policy(Archive).new? %>
 		<%= render partial: "archives/form" %>	
 	<% end %>
 
-	<% if @membership.present? %>
-		<div class="pull-right">
-			<h3>Members in the group</h3>
-			<% @membership.each do |membership| %>
-				<%= membership.user.first_name %>
-				<%= membership.user.last_name %>
-				<%= membership.group_role %>
-				<%= link_to 'edit group role', edit_group_membership_path(@group, membership) %>
-			</br>
-
-			<% end %>
-		</div>
-	<% end %>
-
-	<hr />
 	<h3>Group Archives</h3>
 	<table>
 		<thead>
@@ -51,6 +37,25 @@
 			<% end %>
 		</tbody>
 	</table>
+</div>
 
+	<% if @membership.present? %>
+		<div class="pull-right">
+			<h3>Members in the group</h3>
+			<% @membership.each do |membership| %>
+				<%= membership.user.first_name %>
+				<%= membership.user.last_name %>
+				<%= membership.group_role %>
+				<%= link_to 'edit group role', edit_group_membership_path(@group, membership) %>
+			</br>
+
+			<% end %>
+		</div>
+	<% end %>
+
+	<hr />
+
+	<%= render partial: "comments/form", locals: {commentable: @group} %>
+	<%= render partial: "comments/comments", locals: {commentable: @group} %>
 
 </div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments, module: :groups
   end
 
-  resources :archives do
+  resources :archives, only: [] do
     resources :comments, module: :archives
   end
   

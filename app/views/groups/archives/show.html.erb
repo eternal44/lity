@@ -3,29 +3,26 @@
 <div class="container">
 	<hr />
 	<h3>Archive show</h3>
-	<table>
-		<thead>
-			<tr>
-				<th>First & Last Name</th>
-				<th>Lift Name</th>
-				<th>Weight</th>
-				<th>Video Validation</th>
-				<th colspan="3"></th>
-			</tr>
-		</thead>
+		<%= link_to "Edit ", [:edit, @group, @archive] %>
+		<%= link_to " | Destroy", group_archive_path(@group, @archive), method: :delete, data: {confirm: 'Are you sure?' } %>
 
-		<tbody>
-				<tr>
-					<td><%= @archive.user.first_name %> <%= @archive.user.last_name %></td>
-					<td><%= @archive.lift_name %></td>
-					<td><%= @archive.lift_weight %></td>
-					<td><%= @archive.video_link %></td>
-					<td><%= link_to "Edit", [:edit, @group, @archive] %></td>
-					<td><%= link_to "Destroy", group_archive_path(@group, @archive), method: :delete, data: {confirm: 'Are you sure?' } %></td>
-				</tr>
-		</tbody>
-	</table>
+	</br>
+	</br>
+		<div>
+			<strong>First & Last Name:</strong>
+				<%= @archive.user.first_name %> <%= @archive.user.last_name %></br>
 
+			<strong>Lift Name:</strong>
+				<%= @archive.lift_name %></br>
+
+			<strong>Weight:</strong>
+				<%= @archive.lift_weight %></br>
+
+			<strong>Video Validation:</strong>
+				<%= @archive.video_link %></br>
+
+			</br>
+		</div>
 	<%= render partial: "comments/form", locals: {commentable: @archive} %>
 	<%= render partial: "comments/comments", locals: {commentable: @archive} %>
 

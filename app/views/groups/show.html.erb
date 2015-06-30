@@ -11,7 +11,7 @@
 	<% end %>
 
 	<h3>Group Archives</h3>
-	<table>
+	<table class="table table-bordered table-condensed table-striped">
 		<thead>
 			<tr>
 				<th>First & Last Name</th>
@@ -31,6 +31,7 @@
 						<td><%= archive.lift_weight %></td>
 						<td><%= archive.video_link %></td>
 						<td><%= link_to "Edit", [:edit, @group, archive] %></td>
+						<td><%= link_to "Show", [@group, archive] %></td>
 						<td><%= link_to "Destroy", group_archive_path(@group, archive), method: :delete, data: {confirm: 'Are you sure?' } %></td>
 					</tr>
 				<% end %>

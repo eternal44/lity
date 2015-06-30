@@ -46,6 +46,7 @@ class GroupsController < ApplicationController
 		@group = Group.find(params[:id])
 		# authorize @group
 		@archive = Archive.new
+		@lift_type = ["Squat", "Bench", "Deadlift", "Overhead Press"]
 		@membership = Membership.where(group_id: (params[:id]))
 	end
 

@@ -16,15 +16,19 @@
   <div class="field">
     <%= f.label :lift_weight %><br>
     <%= f.number_field :lift_weight %>
-  </div>
+  </div></br>
+
   <div class="field">
     <%= f.label :lift_name %><br>
-    <%= f.text_field :lift_name %>
-  </div>
+    <%= f.select(:lift_name, ["Squat", "Deadlift", "Bench", "Overhead Press"]) %>
+  </div></br>
+
   <div class="field">
     <%= f.label :video_link %><br>
     <%= f.text_field :video_link %>
   </div>
+
+  </br>
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>

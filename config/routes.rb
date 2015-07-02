@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :friend_requests
-
   devise_for :users
 
   resources :users, only: [:index, :show, :destroy]
@@ -15,6 +13,7 @@ Rails.application.routes.draw do
     resources :comments, module: :archives
   end
   
+  #root
   authenticated :user do
     root to: "users#index", as: :authenticated_root, via: :get
   end
@@ -22,6 +21,12 @@ Rails.application.routes.draw do
   unauthenticated do
     root to: "users#index"
   end
+
+  # for friendship associations
+  get 'friends/index'
+  get 'friends/destroy'
+  resources :friend_requests
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -12,6 +12,11 @@ class FriendRequestsController < ApplicationController
 		end
 	end
 
+	def update
+		@friend_request.accept
+		head :no_content
+	end
+
 	def index
 		@incoming = FriendRequest.where(friend: current_user)
 		@outgoing = current_user.friend_requests

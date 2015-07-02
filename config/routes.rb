@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated do
-    root to: "users#index"
+    root to: "static_pages#home"
   end
 
   # for friendship associations

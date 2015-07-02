@@ -8,9 +8,9 @@
         <span class="icon-bar"></span>
       </button>
       <% if user_signed_in? %>
-        <%= link_to user_path(current_user.id), class: "navbar-brand" do %>
-      <% end %>
-        Lity
+        <%= link_to "Lity (beta)", user_path(current_user.id), class: "navbar-brand" %>
+      <% else %>
+        <%= link_to "Lity (beta)", root_path, class: "navbar-brand" %>
       <% end %>
     </div>
     

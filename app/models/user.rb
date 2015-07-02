@@ -33,4 +33,7 @@ class User < ActiveRecord::Base
 	has_many :memberships
 	has_many :groups, through: :memberships
 	has_many :archives, dependent: :destroy
+
+	has_many :friend_requests, dependent: :destroy
+	has_many :pending_friends, through: :friend_requests, source: :friend
 end

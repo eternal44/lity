@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :friend_requests
+
   devise_for :users
 
   resources :users, only: [:index, :show, :destroy]

@@ -15,12 +15,12 @@
 #
 
 class Friendship < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :friend, class_name: 'User'
-
   after_create :create_inverse_relationship
   after_destroy :destroy_inverse_relationship
 
+  belongs_to :user
+  belongs_to :friend, class_name: 'User'
+  
   validates :user, presence: true  
 	validates :friend, presence: true, uniqueness: { scope: :user } 
 	validate :not_self

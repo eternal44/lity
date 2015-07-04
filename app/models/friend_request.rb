@@ -19,16 +19,11 @@ class FriendRequest < ActiveRecord::Base
   belongs_to :friend, class_name: 'User'
 
 	validates :user, presence: true  
-	validates :friend, presence: true, uniqueness: { scope: :user } 
+	# validates :friend, presence: true, uniqueness: { scope: :user } 
 	
 	validate :not_self	
 	validate :not_friends
 	validate :not_pending
-
-  def accept
-  	user.friends << friend
-  	destroy
-  end
 
   def not_self  
 	  errors.add(:friend, "can't be equal to user") if user == friend

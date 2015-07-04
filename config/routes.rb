@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, only: [:index, :show, :destroy]
+  resources :users, only: [:index, :show, :destroy] do
+    resources :friend_requests, shallow: true do
+    end
+  end
 
+  # for friendship associations
+  resources :friends, only: [:destroy]
+  
+  
   resources :groups do
     resources :archives, module: :groups
     resources :memberships, module: :groups
@@ -22,10 +29,7 @@ Rails.application.routes.draw do
     root to: "static_pages#home"
   end
 
-  # for friendship associations
-  get 'friends/index'
-  get 'friends/destroy'
-  resources :friend_requests
+
 
 
   # Example of regular route:

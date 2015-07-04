@@ -6,7 +6,6 @@
   <%= search_form_for @q, html: {class: "form-inline" } do |f| %>
     <%= f.search_field :first_name_or_groups_group_name_cont, placeholder: "Search user or group", class: "form-control" %>
   <% end %>
-
 </div>
 
 <table class="table table-bordered table-condensed table-striped">
@@ -20,6 +19,13 @@
       <tr>
         <td><%= user.first_name%> <%= user.last_name%></td>
         <td><%= link_to 'Show', user %></td>
+        <% if current_user.friend_requests.where(friend_id: user.id).present? %>
+          <td>Request Sent</td>
+        <% elsif user != current_user %>
+          <td><%= link_to 'Add Friend', user_friend_requests_path(user_id: user.id), method: :post %></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

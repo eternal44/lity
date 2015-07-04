@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
 
 	def new
 		@group = Group.new
-		@group.archives.new
+		@group.archives.new #remove?
 		# authorize @group
 		# authorize @group.archives
 	end

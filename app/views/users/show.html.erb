@@ -10,7 +10,35 @@
 <%= @user.email %><br>
 
 
-<h3>Group & membership dump</h3>
+<h3>Friends List</h3>
+	<% @user.friends.each do |u| %>
+		<% u.friendships.each do |friendship| %>
+			<%= u.first_name %> <%= u.last_name %>
+			<%= link_to "Show", user_path(u) %>
+			<%= link_to "Unfriend", friend_path(friendship.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
+		<% end %>
+	<% end %>
+
+
+
+<h3>Friend Requests</h3>
+	
+	<strong>Friends Requested</strong><br>
+	<% @outgoing.each do |o| %>
+		<%= o.friend.first_name %>
+		<%= link_to "Cancel", friend_request_path(o.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
+
+	<% end %>
+
+	<strong>Accept Friend Request?</strong><br>
+	<% @incoming.each do |i| %>
+		<%= i.user.first_name %>
+		<%= link_to "Confirm", friend_request_path(i.id), method: :put %>
+
+		<%= link_to "Decline", friend_request_path(i.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
+	<% end %>
+
+<h3>Group Members</h3>
 
 	<table class="table table-bordered table-condensed table-striped">
 		<thead>

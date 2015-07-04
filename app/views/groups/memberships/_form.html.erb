@@ -15,7 +15,9 @@
 
   <div class="field">
     <%= f.label :group_role %><br>
-    <%= f.text_field :group_role %>
+    <%= f.select(:group_role, ["Admin", "Regular"]) %>
+    <br>
+    <br>
   </div>
 
   <div class="actions">

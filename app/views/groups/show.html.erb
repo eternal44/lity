@@ -13,13 +13,12 @@
 		<% if @membership.present? %>
 			<div class="pull-left">
 				<h3>Members in the group</h3>
-				<% @membership.each do |membership| %>
-					<%= membership.user.first_name %>
-					<%= membership.user.last_name %>
-					<%= membership.group_role %>
-					<%= link_to 'edit group role', edit_group_membership_path(@group, membership) %>
-				</br>
-
+					<% @membership.each do |membership| %>
+						<%= membership.user.first_name %>
+						<%= membership.user.last_name %>
+						<%= membership.group_role %>
+						<%= link_to 'edit group role', edit_group_membership_path(@group, membership) %>
+					</br>
 				<% end %>
 			</div>
 		<% end %>

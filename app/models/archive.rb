@@ -18,6 +18,8 @@ class Archive < ActiveRecord::Base
 
 	validates :user_id, presence: true
 	validates :group_id, presence: true
+	validates :lift_name, presence: true
+	validates :lift_weight, presence: true
 
 	has_many :comments, as: :commentable
 end

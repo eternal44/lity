@@ -15,7 +15,7 @@
 		<% u.friendships.each do |friendship| %>
 			<%= u.first_name %> <%= u.last_name %>
 			<%= link_to "Show", user_path(u) %>
-			<%= link_to "Unfriend", friend_path(friendship.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
+			<%= link_to " | Unfriend", friend_path(friendship.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
 		<% end %>
 	<% end %>
 
@@ -35,10 +35,10 @@
 		<%= i.user.first_name %>
 		<%= link_to "Confirm", friend_request_path(i.id), method: :put %>
 
-		<%= link_to "Decline", friend_request_path(i.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
+		<%= link_to "Destroy", friend_request_path(i.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
 	<% end %>
 
-<h3>Group Members</h3>
+<h3>Group dump</h3>
 
 	<table class="table table-bordered table-condensed table-striped">
 		<thead>

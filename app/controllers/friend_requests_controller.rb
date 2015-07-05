@@ -2,9 +2,8 @@ class FriendRequestsController < ApplicationController
 	before_action :set_friend_request, except: [:index, :create]
 
 	def create
-		friend = ""
 		friend = User.find(params[:user_id])
-		@friend_request = current_user.friend_requests.new(friend: friend)
+		@friend_request = current_user.friend_requests.new(friend: friend) 
 
 		if @friend_request.save
 			redirect_to request.referrer
@@ -22,11 +21,6 @@ class FriendRequestsController < ApplicationController
 		redirect_to request.referrer
 	end
 
-	def index
-		# @incoming = FriendRequest.where(friend: current_user) #moved this to users#show
-		# @outgoing = current_user.friend_requests #moved this to users#show
-	end
-
 	def destroy
 		@friend_request.destroy
 		redirect_to request.referrer
@@ -37,4 +31,7 @@ class FriendRequestsController < ApplicationController
 			@friend_request = FriendRequest.find(params[:id])
 		end
 
+		def friend_request_params
+			params.require(:friend_request).permit(:user_id, :friend_id)
+		end
 end

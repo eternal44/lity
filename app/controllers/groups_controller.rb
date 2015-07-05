@@ -8,13 +8,12 @@ class GroupsController < ApplicationController
 	end
 
 	def edit
-		@group = Group.find(params[:id])
-		# @group_role = ["regular", "admin"] #putting options on view page
+		# @group = Group.find(params[:id])
 		# authorize @group
 	end
 
 	def update
-		@group = Group.find(params[:id])
+		# @group = Group.find(params[:id])
 
 		if @group.update_attributes(group_params) 
 			redirect_to :back
@@ -43,7 +42,7 @@ class GroupsController < ApplicationController
 	end
 
 	def show
-		@group = Group.find(params[:id])
+		# @group = Group.find(params[:id])
 		# authorize @group
 		@archive = Archive.new
 		@lift_type = ["Squat", "Bench", "Deadlift", "Overhead Press"]
@@ -51,7 +50,7 @@ class GroupsController < ApplicationController
 	end
 
 	def destroy
-		@group = Group.find(params[:id])
+		# @group = Group.find(params[:id])
 		@group.destroy
 		redirect_to groups_path
 	end

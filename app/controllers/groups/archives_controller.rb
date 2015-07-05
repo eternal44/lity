@@ -12,7 +12,7 @@ class Groups::ArchivesController < ApplicationController
 		# authorize @archive
 
 		if @archive.save
-			redirect_to group_path(@group, notice: "Record successfully posted!")
+			redirect_to request.referrer || root_url, notice: "Record successfully posted!"
 		else
 			redirect_to @group, alert: "Unable to save your record"
 		end
@@ -40,13 +40,12 @@ class Groups::ArchivesController < ApplicationController
 		@archive = Archive.find(params[:id])
 		@archive.destroy
 
-		redirect_to @archive.group
 		# authorize @archive
 
-    # respond_to do |format|
-    #   format.html { redirect_to groups_url, notice: 'Record was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
+    respond_to do |format|
+      format.html { redirect_to request.referrer || root_url, notice: 'Record was successfully destroyed.' }
+      format.json { head :no_content }
+    end
 	end
 
 	private

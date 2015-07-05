@@ -9,7 +9,6 @@
 <strong>Email:</strong>
 <%= @user.email %><br>
 
-
 <h3>Friends List</h3>
 	<% @user.friends.each do |u| %>
 		<% u.friendships.each do |friendship| %>
@@ -19,18 +18,15 @@
 		<% end %>
 	<% end %>
 
-
-
-<h3>Friend Requests</h3>
-	
-	<strong>Friends Requested</strong><br>
+<h3>Friends</h3>
+	<strong> Sent Requests</strong><br>
 	<% @outgoing.each do |o| %>
 		<%= o.friend.first_name %>
 		<%= link_to "Cancel", friend_request_path(o.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
-
 	<% end %>
+	<br>
 
-	<strong>Accept Friend Request?</strong><br>
+	<strong>Accept?</strong><br>
 	<% @incoming.each do |i| %>
 		<%= i.user.first_name %>
 		<%= link_to "Confirm", friend_request_path(i.id), method: :put %>
@@ -38,8 +34,7 @@
 		<%= link_to "Destroy", friend_request_path(i.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
 	<% end %>
 
-<h3>Group dump</h3>
-
+<h3>Affiliated Groups</h3>
 	<table class="table table-bordered table-condensed table-striped">
 		<thead>
 			<tr>
@@ -59,14 +54,10 @@
 						</tr>
 					<% end %>
 				<% end %>
-
 		</tbody>
 	</table>
-
-
-
+	
 <h3>Archives</h3>
-
 	<table class="table table-bordered table-condensed table-striped">
 		<thead>
 			<tr>
@@ -88,7 +79,5 @@
 			<% end %>
 		</tbody>
 	</table>
-
-
 
 <%= link_to 'Back', :back %>

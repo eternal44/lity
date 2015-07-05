@@ -1,9 +1,7 @@
-
 <%= form_for(@group) do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
       <ul>
       <% @group.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -17,15 +15,12 @@
   </div>
 
 <h3>Add a user to your group</h3>
-
   <div class="field">
     <%= hidden_field_tag "group[user_ids][]", nil %>
     <% current_user.friends.each do |user| %>
       <%= check_box_tag "group[user_ids][]", user.id,
         @group.user_ids.include?(user.id), id: dom_id(user)%>
       <%= label_tag dom_id(user), user.first_name %> <%= user.last_name %> <%= user.email %><br>
-
-
     <% end %>
   </div>
 

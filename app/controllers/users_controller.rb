@@ -46,3 +46,13 @@ class UsersController < ApplicationController
 			params.require(:user).permit(memberships_attributes: [:group_name])
 		end
 end
+
+
+# <h3>Friends List</h3>
+# 	<% @user.friends.each do |u| %>
+# 		<% u.friendships.each do |friendship| %>
+# 			<%= u.first_name %> <%= u.last_name %>
+# 			<%= link_to "Show", user_path(u) %>
+# 			<%= link_to " | Unfriend", friend_path(friendship.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
+# 		<% end %>
+# 	<% end %>

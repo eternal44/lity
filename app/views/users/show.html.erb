@@ -10,12 +10,10 @@
 <%= @user.email %><br>
 
 <h3>Friends List</h3>
-	<% @user.friends.each do |u| %>
-		<% u.friendships.each do |friendship| %>
-			<%= u.first_name %> <%= u.last_name %>
-			<%= link_to "Show", user_path(u) %>
-			<%= link_to " | Unfriend", friend_path(friendship.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
-		<% end %>
+	<% @user.friendships.each do |u| %>
+		<%= u.friend.first_name %> <%= u.friend.last_name %>
+		<%= link_to "Show", user_path(u.friend_id) %>
+		<%= link_to " | Unfriend", friend_path(u.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
 	<% end %>
 
 <h3>Friends</h3>
@@ -29,7 +27,7 @@
 	<strong>Accept?</strong><br>
 	<% @incoming.each do |i| %>
 		<%= i.user.first_name %>
-		<%= link_to "Confirm", friend_request_path(i.id), method: :put %>
+		<%= link_to "Confirm | ", friend_request_path(i.id), method: :put %>
 
 		<%= link_to "Destroy", friend_request_path(i.id), method: :delete, data: { confirm: 'Are you sure?' } %></br>
 	<% end %>

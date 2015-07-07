@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  group_id   :integer
-#  group_role :text             default("regular")
+#  group_role :text             default("Regular")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

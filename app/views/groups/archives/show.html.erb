@@ -3,8 +3,11 @@
 <div class="container">
 	<hr />
 	<h3>Archive show</h3>
-		<%= link_to "Edit", [:edit, @group, @archive] %>
+
+	<% if current_user.id == @archive.user_id %>
+		<%= link_to "Edit | ", [:edit, @group, @archive] %>
 		<%= link_to "Destroy", group_archive_path(@group, @archive), method: :delete, data: {confirm: 'Are you sure?' } %>
+	<% end %>
 
 	</br>
 	</br>
@@ -19,7 +22,21 @@
 				<%= @archive.lift_weight %></br>
 
 			<strong>Video Validation:</strong>
-				<%= @archive.video_link %></br>
+<div class="container">
+  <div class="row">
+  	<% if @archive.video_link.present? %>
+    <div class="col-sm-6">
+			<!-- 16:9 aspect ratio -->
+			<div class="embed-responsive embed-responsive-16by9">
+				<%= embed(@archive.video_link) %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+
+
 
 			</br>
 		</div>

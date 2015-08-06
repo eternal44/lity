@@ -22,8 +22,7 @@ class Archive < ActiveRecord::Base
 	validates :group_id, presence: true
 	validates :lift_name, presence: true
 	validates :lift_weight, presence: true
-  validates_format_of :video_link, :with => URI::regexp(%w(http https)),
-	allow_nil: true
+  validates_format_of :video_link, :with => /\A(https\:\/\/)?((www\.)?youtube\.com|youtu\.?be)\/.+$\Z/, :allow_blank => true, :message => "must be a valid YouTube URL"
 
 	has_many :comments, as: :commentable, dependent: :destroy
 end

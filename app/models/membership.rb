@@ -15,6 +15,6 @@ class Membership < ActiveRecord::Base
 	belongs_to :group
 
 	scope :admin, -> { where(group_role: 'Admin') }
-	scope :member, -> {where(group_role: 'Regular' || 'Regular' )}
+	scope :member, -> {where(group_role: 'Admin' || 'Regular' )}
 
 end

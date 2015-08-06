@@ -17,6 +17,7 @@ require 'test_helper'
 class ArchiveTest < ActiveSupport::TestCase
   def setup
     @archive = archives(:archive_1)
+    @user = users(:james)
   end
 
   test "should be valid" do
@@ -33,8 +34,33 @@ class ArchiveTest < ActiveSupport::TestCase
     assert_not @archive.valid?
   end
 
+  test "lift_name should be present" do
+    @archive.lift_name = nil
+    assert_not @archive.valid?
+  end
+
+  test "lift_weight should be present" do
+    @archive.lift_weight = nil
+    assert_not @archive.valid?
+  end
+
   test "newest archive should be on top" do
     assert_equal Archive.first, archives(:most_recent)
   end
 
+  test "video format should be valid" do
+    @archive.video_link = "yvewtewyb.com"
+    assert_not @archive.valid?
+  end
+
+  test "associated comments should be deleted" do
+    Comment.create(commentable_type: Archive,
+                   commentable_id: @archive.id,
+                   user_id: @user.id,
+                   body: "This is great!")
+
+    assert_difference 'Comment.count', -1 do
+      @archive.destroy
+    end
+  end
 end

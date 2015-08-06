@@ -14,13 +14,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  commentable_type: MyString
-  commentable_id: 1
+  commentable_type: Group
+  commentable: one
   user_id: 1
-  body: MyText
+  body: "Writing tests!"
 
 two:
-  commentable_type: MyString
-  commentable_id: 1
+  commentable_type: Archive
+  commentable: one
   user_id: 1
-  body: MyText
+  body: "Party USA!"

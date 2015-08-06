@@ -11,15 +11,15 @@
 class Group < ActiveRecord::Base
 	has_many :memberships, dependent: :destroy
 	has_many :users, through: :memberships
-
 	has_many :archives, dependent: :destroy
-
 	has_many :comments, as: :commentable, dependent: :destroy
 
-	accepts_nested_attributes_for :archives
-	accepts_nested_attributes_for :memberships
+  validates :group_name, presence: true
 
-	validates_associated :archives
-	validates :group_name, presence: true
+  # considering moving these 3 below to dashboard model when refactoring.  
+  # They don't belong here, right?
+  accepts_nested_attributes_for :archives
+  accepts_nested_attributes_for :memberships
+  validates_associated :archives
 
 end

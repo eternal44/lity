@@ -35,8 +35,15 @@ class FriendshipTest < ActiveSupport::TestCase
     assert_not @friendship.valid?
   end
 
-  # test "should not be self" do
-  #   @friendship.friend_id = 1
-  #   assert_not @friendship.valid?
+  test "should not be self" do
+    @friendship.friend_id = 1
+    assert_not @friendship.valid?
+  end
+
+  # test "should create inverse relationship" do
+  #   # @friendship.save 
+  #   puts @friendship.save.inspect
+  #   puts Friendship.all.count
+  #   puts "hello"
   # end
 end

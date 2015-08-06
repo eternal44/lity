@@ -12,23 +12,37 @@ require 'test_helper'
 
 class GroupTest < ActiveSupport::TestCase
 
-# 	def setup
-# 		@user = users(:james)
-# 		@group = @user.groups.new(group_name: "hello456")
-# 		# @membership = @group.memberships.build(user_id: @user.id, group_)
-# 	end
+	def setup
+		@user = users(:james)
+		@group = groups(:one) 
+    @commment = comments(:one)
+	end
 
-# 	test "associated group should NOT be destroyed" do
-# 		@user.save
-# 		@group.save
-# 		assert_no_difference 'Group.count' do
-# 			@user.destroy
-# 		end
-# 	end
+	test "associated group should NOT be destroyed" do
+		assert_no_difference 'Group.count' do
+			@user.destroy
+		end
+	end
 
-# 	test "only members can create archives" do
-# 	end
+  test "should be valid" do
+    assert @group.valid?
+  end
 
-# 	test "validated archives show ______" do
-# 	end
+  test "should delete related archives" do
+    assert_difference 'Archive.count', -2 do
+      @group.destroy
+    end
+  end
+
+  test "should delete related memberships" do
+    assert_difference 'Membership.count', -2 do
+      @group.destroy
+    end
+  end
+
+  test "should delete related comments" do
+    assert_difference 'Comment.count', -1 do
+      @group.destroy
+    end
+  end
 end

@@ -17,9 +17,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  friend_id: 
+  user: james
+  friend: steve
 
 two:
-  user_id: 
-  friend_id: 
+  user: phillip
+  friend: james
+
+three:
+  user: phillip
+  friend: james
+

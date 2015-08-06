@@ -28,24 +28,48 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
-	# def user
-	# 	@user ||= users(:james)
-	# end
+	def setup
+		@user = users(:james)
+    @friend_request = friend_requests(:one)
+	end
 
-	# def test_valid?
-	# 	assert user.valid?
-	# end
+	def test_valid?
+		assert @user.valid?
+	end
 
+	test "associated archive should be destroyed" do
+		assert_difference 'Archive.count', -1 do 
+			@user.destroy
+		end
+	end
 
-	# def setup
-	# 	@user = User.new(first_name: "James", last_name: "Youn", email: "boggy@example.com", password: "hello123", password_confirmation: "hello123")
-	# end
+	test "associated memberships should be destroyed" do
+		assert_difference 'Membership.count', -1 do 
+			@user.destroy
+		end
+	end
 
-	# test "associated archive should be destroyed" do
-	# 	@user.save
-	# 	@user.archives.create(group_id: 1, lift_name: "Squat", lift_weight: 200, video_link: "http://www.google.com")
-	# 	assert_difference 'Archive.count', -1 do 
-	# 		@user.destroy
-	# 	end
-	# end
+	test "associated friend_requests should be destroyed" do
+		assert_difference '@user.friend_requests.count', -1 do 
+			@user.destroy
+		end
+	end
+
+	test "associated pending_requests should be destroyed" do
+		assert_difference 'Archive.count', -1 do 
+			@user.destroy
+		end
+	end
+
+	test "associated friendships should be destroyed" do
+		assert_difference 'Friendship.count', -1 do 
+			@user.destroy
+		end
+	end
+
+	test "associated friends should be destroyed" do
+		assert_difference '@user.friends.count', -1 do 
+			@user.destroy
+		end
+	end
 end

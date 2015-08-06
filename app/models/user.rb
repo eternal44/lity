@@ -36,9 +36,9 @@ class User < ActiveRecord::Base
 	has_many :archives, dependent: :destroy
 
 	has_many :friend_requests, dependent: :destroy
-	has_many :pending_friends, through: :friend_requests, source: :friend
+	has_many :pending_friends, through: :friend_requests, source: :friend, dependent: :destroy
 
 	has_many :friendships, dependent: :destroy
-	has_many :friends, through: :friendships
+	has_many :friends, through: :friendships, dependent: :destroy
 
 end

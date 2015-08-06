@@ -14,22 +14,24 @@
 #  index_friend_requests_on_user_id    (user_id)
 #
 
+# From http://itsdan.me/mutual-friendship-in-rails/
 class FriendRequest < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
 	validates :user, presence: true  
-	# validates :friend, presence: true, uniqueness: { scope: :user } 
+	validates :friend, presence: true, uniqueness: { scope: :user } #this was commented out before..
 	
 	validate :not_self	
 	validate :not_friends
 	validate :not_pending
 
-  def not_self  
-	  errors.add(:friend, "can't be equal to user") if user == friend
-	end 
-
 	private
+
+    def not_self  
+      errors.add(:friend, "can't be equal to user") if user == friend
+    end 
+
 		def not_friends
 			errors.add(:friend, 'is already added') if user.friends.include?(friend)
 		end

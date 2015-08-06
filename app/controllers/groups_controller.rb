@@ -43,13 +43,13 @@ class GroupsController < ApplicationController
 		end
 	end
 
-	def show
-		# @group = Group.find(params[:id])
-		# authorize @group
-		@archive = Archive.new
-		@lift_type = ["Squat", "Bench", "Deadlift", "Overhead Press"]
-		@membership = Membership.where(group_id: (params[:id]))
-	end
+  def show
+    # @group = Group.find(params[:id])
+    # authorize @group
+    @archive = Archive.new
+    @lift_type = ["Squat", "Bench", "Deadlift", "Overhead Press"]
+    @membership = Membership.where(group_id: (params[:id]))
+  end
 
 	def destroy
 		# @group = Group.find(params[:id])

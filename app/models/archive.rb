@@ -15,6 +15,8 @@
 class Archive < ActiveRecord::Base
 	belongs_to :group
 	belongs_to :user
+  default_scope -> { order(created_at: :desc) }
+  
 
 	validates :user_id, presence: true
 	validates :group_id, presence: true
@@ -23,5 +25,5 @@ class Archive < ActiveRecord::Base
   validates_format_of :video_link, :with => URI::regexp(%w(http https)),
 	allow_nil: true
 
-	has_many :comments, as: :commentable
+	has_many :comments, as: :commentable, dependent: :destroy
 end

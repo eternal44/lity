@@ -11,6 +11,13 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
+class ActionDispatch::IntegrationTest
+  
+  #allow quicker user sign_in when testing devise
+  include Warden::Test::Helpers
+  Warden.test_mode!
+end
+  
 class ActionController::TestCase
   include Devise::TestHelpers
 end

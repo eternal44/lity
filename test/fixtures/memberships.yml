@@ -12,12 +12,12 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 1
-  group_id: 1
-  group_role: MyString
+admin:
+  user: james
+  group: one
+  group_role: Admin
 
-two:
-  user_id: 1
-  group_id: 1
-  group_role: MyString
+regular:
+  user: steve
+  group: one
+  group_role: Regular

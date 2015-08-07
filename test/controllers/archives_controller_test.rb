@@ -2,8 +2,15 @@ require 'test_helper'
 
 class ArchivesControllerTest < ActionController::TestCase
 
-def setup
-end
+  def setup
+    @archive = archives(:one)
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:archives)
+  end
   # test "should redirect create when not logged in" do
   #   assert_no_difference 'Archive.count' do
   #     post :create, archive: { lift_name: "Lorem ipsum" }

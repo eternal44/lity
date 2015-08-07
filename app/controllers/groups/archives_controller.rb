@@ -9,7 +9,6 @@ class Groups::ArchivesController < ApplicationController
 	def create
 		@archive = @group.archives.new(archive_params)
 		@archive.user = current_user
-		# authorize @archive
 
 		if @archive.save
 			redirect_to request.referrer || root_url, notice: "Record successfully posted!"
@@ -20,14 +19,10 @@ class Groups::ArchivesController < ApplicationController
 
 	def edit
 		@archive = Archive.find(params[:id])
-		# @archive = @group.archive.find(params[:id])
-		# authorize @archive	
 	end
 
 	def update
 		@archive = Archive.find(params[:id])
-		# @archive = @group.archive.find(params[:id])		
-		# authorize @archive		
 
 		if @archive.update(archive_params)
 			redirect_to @archive.group
@@ -40,8 +35,6 @@ class Groups::ArchivesController < ApplicationController
 		@archive = Archive.find(params[:id])
 		@archive.destroy
 
-		# authorize @archive
-
     respond_to do |format|
       format.html { redirect_to request.referrer || root_url, notice: 'Record was successfully destroyed.' }
       format.json { head :no_content }
@@ -52,7 +45,6 @@ class Groups::ArchivesController < ApplicationController
 
 		def set_group
 			@group = Group.find(params[:group_id])
-			# authorize @archive
 		end
 
 		def archive_params

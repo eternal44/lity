@@ -41,7 +41,7 @@ class GroupTest < ActiveSupport::TestCase
   end
 
   test "should delete related comments" do
-    assert_difference 'Comment.count', -1 do
+    assert_difference '@group.comments.count', -1 do
       @group.destroy
     end
   end

@@ -16,7 +16,7 @@ require 'test_helper'
 
 class ArchiveTest < ActiveSupport::TestCase
   def setup
-    @archive = archives(:archive_1)
+    @archive = archives(:one)
     @user = users(:james)
   end
 
@@ -59,7 +59,7 @@ class ArchiveTest < ActiveSupport::TestCase
                    user_id: @user.id,
                    body: "This is great!")
 
-    assert_difference 'Comment.count', -1 do
+    assert_difference 'Comment.count', -2 do
       @archive.destroy
     end
   end

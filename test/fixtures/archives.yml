@@ -14,7 +14,7 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-archive_1:
+one:
   user: james
   group: one
   lift_name: "Squat"
@@ -22,7 +22,7 @@ archive_1:
   video_link: "https://www.youtube.com/watch?v=VwQr4fGL2pc"
   created_at: <%= 3.hours.ago %>
 
-archive_2:
+two:
   user: steve
   group: one
   lift_name: "Squat"

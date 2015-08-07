@@ -19,8 +19,8 @@ class FriendRequest < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
-	validates :user, presence: true  
-	validates :friend, presence: true, uniqueness: { scope: :user } #this was commented out before..
+	# validates :user, presence: true  
+	# validates :friend, presence: true, uniqueness: { scope: :user } #this was commented out before..
 	
 	validate :not_self	
 	validate :not_friends

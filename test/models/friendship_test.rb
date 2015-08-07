@@ -18,7 +18,9 @@ require 'test_helper'
 
 class FriendshipTest < ActiveSupport::TestCase
   def setup
-    @friendship = Friendship.new(user_id: 1, friend_id: 2)
+    @user = users(:james)
+    @friend = users(:phillip)
+    @friendship = Friendship.new(user_id: @user.id, friend_id: @friend.id)
   end
 
   test "should be valid" do
@@ -36,14 +38,24 @@ class FriendshipTest < ActiveSupport::TestCase
   end
 
   test "should not be self" do
-    @friendship.friend_id = 1
+    @friendship.friend_id = @user.id
     assert_not @friendship.valid?
   end
 
-  # test "should create inverse relationship" do
-  #   # @friendship.save 
-  #   puts @friendship.save.inspect
-  #   puts Friendship.all.count
-  #   puts "hello"
-  # end
+  test "should create inverse relationship" do
+    @friendship.save
+    assert_equal Friendship.last.user_id, @friend.id
+    assert_equal Friendship.last.friend_id, @user.id
+  end
+
+
+  test "should destroy inverse relationship" do
+    @friendship.save
+    assert_equal Friendship.last.user_id, @friend.id
+    assert_equal Friendship.last.friend_id, @user.id
+
+    assert Friendship.count, -2 do
+      @friendship.destroy
+    end
+  end
 end

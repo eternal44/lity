@@ -20,11 +20,3 @@ one:
   user: james
   friend: steve
 
-two:
-  user: phillip
-  friend: james
-
-three:
-  user: phillip
-  friend: james
-

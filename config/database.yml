@@ -5,8 +5,8 @@ development:
   pool: 5
   host: localhost
   timeout: 5000
-  username: james
-  password: secret #is a password necesary?
+  username:
+  password:
 
 test:
   adapter: postgresql
@@ -15,5 +15,5 @@ test:
   pool: 5
   host: localhost
   timeout: 5000
-  username: james
-  password: secret #is a password necesary?
+  username:
+  password:

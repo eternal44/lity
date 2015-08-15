@@ -1,8 +1,8 @@
 class ArchivesTest < ActionDispatch::IntegrationTest
 
   test "should route to archive" do
-    assert_routing '/groups/1/archives/1', 
-      { controller: "groups/archives", action: "show", group_id: "1", id: "1" }
+    assert_routing '/archives/1',
+      { controller: "groups/archives", action: "show", id: "1" }
   end
 
   test "should route to create archive" do

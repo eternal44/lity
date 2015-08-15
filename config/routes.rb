@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :groups do
-    resources :archives, module: :groups
+    scope module: 'groups', shallow: true do
+      resources :archives
+      # can add more resources like this:
+      # resources :archives, memberships
+    end
   end
 
   resources :memberships

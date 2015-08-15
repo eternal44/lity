@@ -12,7 +12,7 @@ class Group < ActiveRecord::Base
 	has_many :memberships
 	has_many :users, through: :memberships
 
-	has_many :archives
+	has_many :archives, dependent: :destroy
 
 	accepts_nested_attributes_for :archives
 

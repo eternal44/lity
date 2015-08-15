@@ -9,4 +9,8 @@
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  group_name: Lifters
 
+two:
+  group_name: Meaters

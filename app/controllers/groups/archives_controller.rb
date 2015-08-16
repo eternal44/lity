@@ -1,4 +1,4 @@
-class Groups::ArchivesController < ApplicationController
+class ArchivesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_archive
 

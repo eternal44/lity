@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
 
   resources :groups do
-    resources :archives, shallow: true
-    # can add more resources like this:
-    # resources :archives, memberships
+    scope module: 'groups' do
+      resources :archives, shallow: true
+      # can add more resources like this:
+      # resources :archives, memberships
+    end
   end
 
   resources :memberships

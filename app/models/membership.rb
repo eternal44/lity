@@ -19,15 +19,15 @@ class Membership < ActiveRecord::Base
   validates :group_role, inclusion: { in: %w(Admin Regular),
                                     messge: "%(value) is not a valid membership type" }
 
-  # refactor these scopes out.
+  # used in group_helper.rb
 	scope :admin, -> { where(group_role: 'Admin') }
 	scope :member, -> {where(group_role: 'Admin' || 'Regular' )}
 
-  def admin?    
+  def admin?
     group_role == "Admin"
   end
 
-  def regular?    
+  def regular?
     group_role == "Admin" || "Regular"
   end
 

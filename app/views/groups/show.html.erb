@@ -11,8 +11,9 @@
 
 <div class="row">
 	<% if policy(Archive).new? %>
-
+    <% if regular(@group) %>
       <%= render partial: "archives/form" %>
+    <% end %>
 
 		<% if @membership.present? %>
 			<div class="pull-left">

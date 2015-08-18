@@ -12,7 +12,9 @@
 
 <h3>Add a user to your group</h3>
   <div class="field">
-    <%= hidden_field_tag "group[user_ids][]", nil %>
+    <%# always adding current_user.id here works because only admins %>
+    <%# of a group will have access to this view %>
+    <%= hidden_field_tag "group[user_ids][]", current_user.id %>
     <% current_user.friends.each do |user| %>
       <%= check_box_tag "group[user_ids][]", user.id,
         @group.user_ids.include?(user.id), id: dom_id(user)%>

@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]	
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   helper GroupHelper
@@ -17,11 +17,11 @@ class GroupsController < ApplicationController
 	def update
 		# @group = Group.find(params[:id])
 
-		if @group.update_attributes(group_params) 
+		if @group.update(group_params)
 			redirect_to :back
 		else
 			render :edit
-		end	
+		end
 	end
 
 	def new

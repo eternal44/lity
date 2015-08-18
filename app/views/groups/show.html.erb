@@ -2,9 +2,9 @@
 
 <div class="container">
 	<h1><%= @group.group_name %></h1>
-	
+
 	<% if admin(@group) %>
-		<%= link_to 'Manage Group Memberships', edit_group_path(@group) %> | 
+		<%= link_to 'Manage Group Memberships', edit_group_path(@group) %> |
 	<% end %>
 
 	<%= link_to 'Back', groups_path %>
@@ -12,7 +12,7 @@
 <div class="row">
 	<% if policy(Archive).new? %>
 
-		<%= render partial: "archives/form" %>	
+      <%= render partial: "archives/form" %>
 
 		<% if @membership.present? %>
 			<div class="pull-left">
@@ -48,7 +48,6 @@
 		</thead>
 
 		<tbody>
-    <%= @group.archives.empty? %>
 			<% if @group.archives.present? %>
 				<% @group.archives.each do |archive| %>
 					<tr>

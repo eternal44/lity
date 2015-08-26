@@ -10,29 +10,27 @@
 	<%= link_to 'Back', :back  %>
 
 <div class="row">
-	<% if policy(Archive).new? %>
-    <% if regular(@group) %>
-      <%= render partial: "archives/form" %>
-    <% end %>
+  <% if regular(@group) %>
+    <%= render partial: "archives/form" %>
+  <% end %>
 
-		<% if @membership.present? %>
-			<div class="pull-left">
-				<h3>Members in the group</h3>
-					<% @membership.each do |membership| %>
-						<%= membership.user.first_name %>
-						<%= membership.user.last_name %>
-						-
-						<%= membership.group_role %>
+  <% if @membership.present? %>
+    <div class="pull-left">
+      <h3>Members in the group</h3>
+        <% @membership.each do |membership| %>
+          <%= membership.user.first_name %>
+          <%= membership.user.last_name %>
+          -
+          <%= membership.group_role %>
 
-						<%= link_to 'Show', user_path(membership.user.id) %>
-						<% if admin(@group) %>
-							<%= link_to ' | Edit Group Role', edit_group_membership_path(@group, membership) %>
-						<% end %>
-					</br>
-				<% end %>
-			</div>
-		<% end %>
-	<% end %>
+          <%= link_to 'Show', user_path(membership.user.id) %>
+          <% if admin(@group) %>
+            <%= link_to ' | Edit Group Role', edit_group_membership_path(@group, membership) %>
+          <% end %>
+        </br>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="row">

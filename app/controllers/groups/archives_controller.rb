@@ -1,5 +1,4 @@
 class Groups::ArchivesController < ApplicationController
-	before_action :authenticate_user!
 	before_action :set_group
 
 	def show
@@ -13,7 +12,7 @@ class Groups::ArchivesController < ApplicationController
 		if @archive.save
 			redirect_to request.referrer || root_url, notice: "Record successfully posted!"
 		else
-			redirect_to @group, alert: "Unable to save your record"
+			redirect_to @group, notice: "Unable to save your record"
 		end
 	end
 

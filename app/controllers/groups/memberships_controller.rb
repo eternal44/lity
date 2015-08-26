@@ -1,19 +1,23 @@
 class Groups::MembershipsController < ApplicationController
 	before_action :set_group
-	before_action :set_membership
 
 	def new
 		@membership = Membership.new
 	end
 
 	def index
+		# @group = Group.find(params[:id])
+		# # @memberships = @group.memberships
 		@memberships = Membership.all
 	end
 
 	def edit
+		@membership = Membership.find(params[:id])
 	end
 
 	def update
+		@membership = Membership.find(params[:id])
+
 		if @membership.update(membership_params)
 			redirect_to group_path(@group)
 		else
@@ -32,6 +36,7 @@ class Groups::MembershipsController < ApplicationController
 	end
 
 	def destroy
+		@membership = Membership.find(params[:id])
 		@membership.destroy
 		redirect_to memberships_path
 	end
@@ -39,10 +44,6 @@ class Groups::MembershipsController < ApplicationController
 	private
 		def set_group
 			@group = Group.find(params[:group_id])
-		end
-
-		def set_membership
-      @membership = Membership.find(params[:id])
 		end
 
 		def membership_params

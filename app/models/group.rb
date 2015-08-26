@@ -16,7 +16,7 @@ class Group < ActiveRecord::Base
 
   validates :group_name, presence: true
 
-  # considering moving these 3 below to dashboard model when refactoring.  
+  # considering moving these 3 below to dashboard model when refactoring.
   # They don't belong here, right?
   accepts_nested_attributes_for :archives
   accepts_nested_attributes_for :memberships

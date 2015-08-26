@@ -30,7 +30,4 @@ class Membership < ActiveRecord::Base
   def regular?
     group_role == "Admin" || "Regular"
   end
-
-
-
 end

@@ -1,64 +1,63 @@
 <body>
-    <hr>
+  <hr>
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>Your Personal Fantasy Sport</h2>
+      <p>Personally compete between friends or groups for recognition.</p>
+      <div class="btn btn-default btn-lg">
+        <%= link_to 'Sign Up', new_user_registration_path %>
+      </div>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <h2>Contact Us</h2>
+      <address>
+        <abbr title="Email">Email:</abbr> <a href="mailto:jamesyoun710@gmail.com">jamesyoun710@gmail.com</a>
+      </address>
+    </div>
+  </div>
+  <!-- /.row -->
 
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <img class="img-circle img-responsive img-center"
+           src="/images/private-icon.png" alt="">
+      <h2>Compete privately</h2>
+      <p>Choose to compete privately with your friends</p>
+    </div>
+    <div class="col-sm-4">
+      <img class="img-circle img-responsive img-center"
+           src="/images/prize-icon.png" alt="">
+      <h2>Public Prizes</h2>
+      <p>Join a public group to win recognition from sponsors & viewers alike.</p>
+    </div>
+    <div class="col-sm-4">
+      <img class="img-circle img-responsive img-center"
+           src="/images/ranking-icon.png" alt="">
+      <h2>Ranking</h2>
+      <p>See how you rank between other users.</p>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
     <div class="row">
-        <div class="col-sm-8">
-            <h2>Your Personal Fantasy Sport</h2>
-            <p>Personally compete between friends or groups for recognition.</p>
-            <div class="btn btn-default btn-lg"> 
-                <%= link_to 'Sign Up', new_user_registration_path %>
-            </div>
-            </p>
-        </div>
-        <div class="col-sm-4">
-            <h2>Contact Us</h2>
-            <address>
-                <abbr title="Email">Email:</abbr> <a href="mailto:jamesyoun710@gmail.com">jamesyoun710@gmail.com</a>
-            </address>
-        </div>
+      <div class="col-lg-12">
+        <p>Copyright &copy; Lity 2015</p>
+      </div>
     </div>
     <!-- /.row -->
+  </footer>
 
-    <hr>
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
 
-    <div class="row">
-        <div class="col-sm-4">
-          <img class="img-circle img-responsive img-center" 
-          src="/images/private-icon.png" alt="">
-            <h2>Compete privately</h2>
-            <p>Choose to compete privately with your friends</p>
-        </div>
-        <div class="col-sm-4">
-          <img class="img-circle img-responsive img-center" 
-          src="/images/prize-icon.png" alt="">
-            <h2>Public Prizes</h2>
-            <p>Join a public group to win recognition from sponsors & viewers alike.</p>
-        </div>
-        <div class="col-sm-4">
-          <img class="img-circle img-responsive img-center"
-            src="/images/ranking-icon.png" alt="">
-            <h2>Ranking</h2>
-            <p>See how you rank between other users.</p>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; Lity 2015</p>
-            </div>
-        </div>
-        <!-- /.row -->
-    </footer>
-
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
 
 </body>

@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150707023853) do
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
-    t.string   "group_role", default: "Regular"
+    t.text     "group_role", default: "Regular"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end

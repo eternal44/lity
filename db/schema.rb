@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150707023853) do
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "group_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,7 +65,7 @@ ActiveRecord::Schema.define(version: 20150707023853) do
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
-    t.text     "group_role", default: "Regular"
+    t.string   "group_role", default: "Regular"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
